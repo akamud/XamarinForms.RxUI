@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace XamarinForms.RxUI
 {
@@ -16,6 +12,9 @@ namespace XamarinForms.RxUI
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = new MainPageViewModel();
+
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(-27.500146, -48.514595), Distance.FromMeters(300)));
         }
     }
 }
