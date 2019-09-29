@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29324.140
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms.RxUI.Android", "XamarinForms.RxUI\XamarinForms.RxUI.Android\XamarinForms.RxUI.Android.csproj", "{19CCBC18-7407-4C8B-857C-2CE1F998DFB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms.RxUI.Android", "src\XamarinForms.RxUI.Android\XamarinForms.RxUI.Android.csproj", "{19CCBC18-7407-4C8B-857C-2CE1F998DFB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms.RxUI.iOS", "XamarinForms.RxUI\XamarinForms.RxUI.iOS\XamarinForms.RxUI.iOS.csproj", "{829A62E1-2416-4D13-94E8-1D5A0BEDD023}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms.RxUI.iOS", "src\XamarinForms.RxUI.iOS\XamarinForms.RxUI.iOS.csproj", "{829A62E1-2416-4D13-94E8-1D5A0BEDD023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms.RxUI", "XamarinForms.RxUI\XamarinForms.RxUI\XamarinForms.RxUI.csproj", "{813F30C1-F059-4C4F-8D2E-E11F07B3F3C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamarinForms.RxUI", "src\XamarinForms.RxUI\XamarinForms.RxUI.csproj", "{813F30C1-F059-4C4F-8D2E-E11F07B3F3C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
