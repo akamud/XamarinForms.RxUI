@@ -4,13 +4,36 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Padding="16"
              x:Class="XamarinForms.RxUI.MainPage">
-
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Entry Placeholder="CEP" Text="{Binding CEP}"
+               MaxLength="9"/>
+        <StackLayout BackgroundColor="#D3D3D3" Padding="10">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Resultado para o CEP "/>
+                        <Span Text="{Binding ResultadoCEP.CEPBuscado}"
+                              FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Endereço: "/>
+                        <Span Text="{Binding ResultadoCEP.Endereço}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+        <StackLayout BindableLayout.ItemsSource="{Binding CEPsBuscados}" Padding="10">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}"/>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
     </StackLayout>
-
 </ContentPage>

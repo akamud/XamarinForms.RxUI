@@ -16,6 +16,8 @@ namespace XamarinForms.RxUI
         public MainPage()
         {
             InitializeComponent();
+
+            BindingContext = new MainPageViewModel();
         }
     }
 }
