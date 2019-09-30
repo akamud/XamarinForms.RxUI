@@ -42,6 +42,7 @@ namespace XamarinForms.RxUI.ViewModels
         public RxUIPageViewModel()
         {
             CEPsBuscados = new ObservableCollection<string>();
+            CEP = "";
         }
     }
 }
