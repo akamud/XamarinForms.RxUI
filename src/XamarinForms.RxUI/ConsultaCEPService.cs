@@ -21,7 +21,7 @@ namespace XamarinForms.RxUI
             return new ResultadoCEP
             {
                 CEPBuscado = CEP,
-                Endereço = (Regex.IsMatch(CEP, regexPattern) ? new Faker("pt_BR").Address.FullAddress() : "")
+                Endereço = (Regex.IsMatch(CEP, regexPattern) ? new Faker("pt_BR").Address.FullAddress() : "**CEP Inválido")
             };
         }
     }
