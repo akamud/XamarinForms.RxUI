@@ -1,59 +1,45 @@
 ﻿using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace XamarinForms.RxUI
+namespace XamarinForms.RxUI.ViewModels
 {
-    public class MainPageViewModel : ReactiveObject
+    public class RxUIPageViewModel : ReactiveObject
     {
         private static string regexPattern = @"\d{5}\-\d{3}";
+
         private async Task<ResultadoCEP> BuscarCEP(string cep)
         {
             Device.BeginInvokeOnMainThread(() => CEPsBuscados.Insert(0, cep));
             return await ConsultaCEPService.ConsultarCEP(cep);
         }
 
-        private string cep;
+        [Reactive]
+        public string CEP { get; set; }
 
-        public string CEP
-        {
-            get { return cep; }
-            set { this.RaiseAndSetIfChanged(ref cep, value); }
-        }
-
-        ObservableAsPropertyHelper<ResultadoCEP> resultadoCEP;
-
-        public ResultadoCEP ResultadoCEP
-        {
-            get { return resultadoCEP.Value; }
-        }
+        public ResultadoCEP ResultadoCEP { [ObservableAsProperty] get; }
 
         public ObservableCollection<string> CEPsBuscados { get; set; }
 
-        public MainPageViewModel()
+        public RxUIPageViewModel()
         {
             CEPsBuscados = new ObservableCollection<string>();
             CEP = "";
 
-            resultadoCEP = this.WhenAnyValue(x => x.CEP)
+            this.WhenAnyValue(x => x.CEP)
                 .Throttle(TimeSpan.FromMilliseconds(250), RxApp.TaskpoolScheduler)
                 .Select(x => x.Trim())
                 .Where(s => Regex.IsMatch(s, regexPattern))
                 .DistinctUntilChanged()
-                .Select(async _ => await BuscarCEP(cep))
+                .Select(async cep => await BuscarCEP(cep))
                 .Switch()
                 .ObserveOn(RxApp.MainThreadScheduler)
-                .ToProperty(this, e => e.ResultadoCEP);
-
-            resultadoCEP.ThrownExceptions.Subscribe(x =>
-            {
-                Debug.WriteLine(x);
-            });
+                .ToPropertyEx(this, e => e.ResultadoCEP);
         }
     }
 }

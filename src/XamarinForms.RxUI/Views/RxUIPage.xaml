@@ -5,21 +5,22 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              Padding="16"
-             x:Class="XamarinForms.RxUI.MainPage">
+             x:Class="XamarinForms.RxUI.Views.RxUIPage">
     <StackLayout>
         <Entry Placeholder="CEP" Text="{Binding CEP}"
                MaxLength="9"/>
-        <StackLayout BackgroundColor="#D3D3D3" Padding="10">
-            <Label>
+        <StackLayout BackgroundColor="#DFDFDF" Padding="10">
+            <Label FontSize="20">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Resultado para o CEP "/>
                         <Span Text="{Binding ResultadoCEP.CEPBuscado}"
+                              FontSize="20"
                               FontAttributes="Bold"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label>
+            <Label FontSize="16">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Endereço: "/>
@@ -28,12 +29,15 @@
                 </Label.FormattedText>
             </Label>
         </StackLayout>
-        <StackLayout BindableLayout.ItemsSource="{Binding CEPsBuscados}" Padding="10">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <Label Text="{Binding .}"/>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
+        <StackLayout Padding="10" BackgroundColor="#e0ddce">
+            <Label Text="CEPs Consultados:" FontAttributes="Bold" FontSize="16"/>
+            <StackLayout BindableLayout.ItemsSource="{Binding CEPsBuscados}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding .}" FontSize="18"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
         </StackLayout>
     </StackLayout>
 </ContentPage>

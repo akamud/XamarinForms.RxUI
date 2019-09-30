@@ -1,6 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+using XamarinForms.RxUI.Views;
 
 namespace XamarinForms.RxUI
 {
@@ -10,7 +9,7 @@ namespace XamarinForms.RxUI
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
