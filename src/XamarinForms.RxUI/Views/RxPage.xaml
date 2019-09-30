@@ -4,12 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             Padding="16"
              x:Class="XamarinForms.RxUI.Views.RxPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="entry" IsTextPredictionEnabled="False" IsSpellCheckEnabled="False"/>
+            <StackLayout BackgroundColor="#DFDFDF" VerticalOptions="FillAndExpand" Padding="10" IsClippedToBounds="True">
+                <StackLayout BindableLayout.ItemsSource="{Binding Itens}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}"
+                                   FontSize="18" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

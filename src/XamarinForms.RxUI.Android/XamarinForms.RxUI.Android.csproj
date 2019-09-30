@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -90,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamarinForms.RxUI\XamarinForms.RxUI.csproj">
-      <Project>{593C14E4-F893-4DCE-9B7A-C325CE771521}</Project>
+      <Project>{813F30C1-F059-4C4F-8D2E-E11F07B3F3C1}</Project>
       <Name>XamarinForms.RxUI</Name>
     </ProjectReference>
   </ItemGroup>

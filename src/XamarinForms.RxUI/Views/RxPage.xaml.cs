@@ -8,7 +8,7 @@ namespace XamarinForms.RxUI.Views
         public RxPage()
         {
             InitializeComponent();
-            BindingContext = new RxPageViewModel();
+            BindingContext = new RxPageViewModel(entry);
         }
     }
 }
