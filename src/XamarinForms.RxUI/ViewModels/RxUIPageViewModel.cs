@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using MvvmHelpers;
+using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using System;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ using Xamarin.Forms;
 
 namespace XamarinForms.RxUI.ViewModels
 {
-    public class RxUIPageViewModel : ReactiveObject
+    public class RxUIPageViewModel : ObservableObject
     {
         private static string regexPattern = @"\d{5}\-\d{3}";
 
@@ -19,10 +20,22 @@ namespace XamarinForms.RxUI.ViewModels
             return await ConsultaCEPService.ConsultarCEP(cep);
         }
 
-        [Reactive]
-        public string CEP { get; set; }
+        private string cep;
+        public string CEP
+        {
+            get => cep;
+            set
+            {
+                SetProperty(ref cep, value, onChanged: async () => ResultadoCEP = await BuscarCEP(CEP));
+            }
+        }
 
-        public ResultadoCEP ResultadoCEP { [ObservableAsProperty] get; }
+        private ResultadoCEP resultadoCEP;
+        public ResultadoCEP ResultadoCEP
+        {
+            get => resultadoCEP;
+            set => SetProperty(ref resultadoCEP, value);
+        }
 
         public ObservableCollection<string> CEPsBuscados { get; set; }
 
@@ -30,16 +43,6 @@ namespace XamarinForms.RxUI.ViewModels
         {
             CEPsBuscados = new ObservableCollection<string>();
             CEP = "";
-
-            this.WhenAnyValue(x => x.CEP)
-                .Throttle(TimeSpan.FromMilliseconds(250), RxApp.TaskpoolScheduler)
-                .Select(x => x.Trim())
-                .Where(s => Regex.IsMatch(s, regexPattern))
-                .DistinctUntilChanged()
-                .Select(async cep => await BuscarCEP(cep))
-                .Switch()
-                .ObserveOn(RxApp.MainThreadScheduler)
-                .ToPropertyEx(this, e => e.ResultadoCEP);
         }
     }
 }
