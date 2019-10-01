@@ -1,0 +1,44 @@
+marble throttle
+{
+	source CEP:               +-(01234-000)--(01234-001)-----(01234-002)->    
+	operator Throttle(250ms): +--          --(01234-001)-----(01234-002)->
+}
+
+marble select
+{
+    source CEP:            +-( 01234-001 )->
+    operator Select(Trim): +-(01234-001)  ->
+}
+
+marble where
+{
+    source CEP:                    +-(01234000)---(01234-000)->
+    operator Where(Regex.IsMatch): +--         ---(01234-000)->
+}
+
+marble distinctUntilChanged
+{
+    source CEP:                    +-(01234000)--(0123400)--(01234001)->
+    operator DistinctUntilChanged: +-(01234000)---        --(01234001)->
+}
+
+marble select
+{
+    source CEP:                  +-(01234-000)---(01234-001)->
+    operator BuscaCep:
+            {
+                    .+(01234-000)-| // Consulta na API
+                .....+(01234-001)-| // Consulta na API
+            }   
+}
+
+marble switch
+{
+    source CEP:
+            {
+                    .+(01234-000)-| // Consulta na API
+                  ...+---(01234-001)-| // Consulta na API
+                .....+(01234-002)-| // Consulta na API
+            }   
+    operator Switch: .+(01234-000)---(01234-002)->
+}
