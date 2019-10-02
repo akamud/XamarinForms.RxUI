@@ -7,7 +7,7 @@
              Padding="16"
              x:Class="XamarinForms.RxUI.Views.RxUIPage">
     <StackLayout>
-        <Entry Placeholder="CEP" Text="{Binding CEP}"/>
+        <Entry Placeholder="CEP" Text="{Binding CEP}" IsSpellCheckEnabled="False"/>
         <StackLayout BackgroundColor="#DFDFDF" Padding="10">
             <Label FontSize="20">
                 <Label.FormattedText>

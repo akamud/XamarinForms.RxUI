@@ -11,7 +11,7 @@ namespace XamarinForms.RxUI.ViewModels
 {
     public class RxUIPageViewModel : ReactiveObject
     {
-        private static string regexPattern = @"\d{5}\-\d{3}";
+        private static string regexPattern = @"^\d{5}\-\d{3}$";
 
         private async Task<ResultadoCEP> BuscarCEP(string cep)
         {
