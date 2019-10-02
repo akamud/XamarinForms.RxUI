@@ -14,6 +14,8 @@ namespace XamarinForms.RxUI.ViewModels
 
         public RxPageViewModel(Entry entry)
         {
+            // NÃO FAÇA ISSO EM PRODUÇÃO, para deixar a demo focada apenas no que interessava
+            // eu fiz essa gambiarra xavosa que você nunca deve repetir ;)
             this.entry = entry;
             Itens = new ObservableCollection<string>();
 
