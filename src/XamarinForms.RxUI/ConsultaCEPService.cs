@@ -7,7 +7,7 @@ namespace XamarinForms.RxUI
 {
     public static class ConsultaCEPService
     {
-        private static string regexPattern = @"\d{5}\-\d{3}";
+        private static string regexPattern = @"^\d{5}\-\d{3}$";
         private static Random _random;
 
         static ConsultaCEPService()
